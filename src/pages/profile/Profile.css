@@ -59,3 +59,12 @@
     display: flex;
     justify-content: space-between;
 }
+
+.MuiSvgIcon-root {
+    width: 0.75em!important;
+    transform: translate(0, -10%)!important;
+}
+
+.profile_container input{
+    height: 5vh;
+}

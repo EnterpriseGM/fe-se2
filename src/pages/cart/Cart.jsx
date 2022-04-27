@@ -25,7 +25,6 @@ export default class Cart extends React.Component {
         })
     }
 
-    
     formatNum(num) {
         return (num*1000).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
@@ -88,6 +87,33 @@ export default class Cart extends React.Component {
             }).catch(err => {
                 console.log(err);
             })
+        }
+    }
+
+    deleteAll(){
+        let total = 0;
+        const num = this.state.products.length;
+        if(window.confirm("Delete all products") === true){
+            this.state.products.forEach(product => {
+                axios.get(`${this.props.url}/api/cart/delete-from-cart/${product.product.productId}`)
+                .then(res => {
+                    if(res.status === 200){
+                        total++;
+                    }
+                }).then(() => {
+                    return  axios.get(`${this.props.url}/api/cart/view-cart`)
+                }).then(res => {
+                    const products = res.data;
+                    this.setState({
+                        products
+                    })
+                }).catch(err => {
+                    console.log(err);
+                })
+            })
+        }
+        if(total === num){
+            window.alert("Deleted success");
         }
     }
 
@@ -178,6 +204,7 @@ export default class Cart extends React.Component {
                             <li className="totalRow"><span className="label">Shipping</span><span className="value">15,000 VND</span></li>
                             <li className="totalRow final"><span className="label">Total</span><span className="value">{this.formatNum(total+15)} VND</span></li>
                         <li className="totalRow"><button className="c_btn btn continue p-3" onClick={this.checkOut.bind(this)}>Checkout</button></li>
+                        <li className="totalRow"><button className="c_btn btn text-danger continue p-3" onClick={this.deleteAll.bind(this)}>Delete All</button></li>
                     </ul>
                     </div>
                 </>

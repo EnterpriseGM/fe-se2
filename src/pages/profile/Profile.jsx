@@ -1,6 +1,7 @@
 import React from 'react';
 import './Profile.css';
 import axios from 'axios';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 export default class Profile extends React.Component {
 
@@ -25,8 +26,10 @@ export default class Profile extends React.Component {
         axios.defaults.headers.common = {'Authorization': `${this.props.token}`}
         axios.get(`${this.props.url}/api/client/client-detail`)
         .then(res => {
+            const user = res.data
             this.setState({
-                user: res.data
+                user,
+                username: user.username,
             })
         }).then(() => {
             const user = this.state.user;
@@ -151,6 +154,32 @@ export default class Profile extends React.Component {
         }
     }
 
+    changeUsername(){
+        if(window.confirm("Do you want to change your username?")){
+            axios.post(`${this.props.url}/api/client/edit-username`, {
+                username: this.state.username
+            }).then(res => {
+                if(res.status === 200){
+                    window.alert("Update successfully!");
+                }
+            }).then(() => {
+                return axios.get(`${this.props.url}/api/client/client-detail`)
+            }).then(res => {
+                this.setState({
+                    user: res.data
+                })
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+
+    changeStateUsername(e){
+        this.setState({
+            username: e.target.value
+        })
+    }
+
     render() {
         const user = this.state.user;
 
@@ -163,19 +192,20 @@ export default class Profile extends React.Component {
                                 <div className="content-card__head p-2">
                                     <div className="image w-100 text-center mb-2">
                                         <img src="https://be-pr2.000webhostapp.com/userImages/blank-profile-picture-973460_640.png" alt="" className=""/>
-                                        <button className="image_change p-2">
-                                            <i className="fa-solid fa-camera cursor-pointer"></i>
+                                        <button className="image_change p-2" disabled>
+                                            <i className="fa-solid fa-camera cursor-pointer" ></i>
                                         </button>
                                     </div>
-                                    <div className="user-name">
-                                        <h4 className="m-0 text-center">{user.username}</h4>
-                                        <div className="d-flex justify-content-between my-2">
+                                    <div className="user-name d-flex"> 
+                                        <h4 className="m-0 text-center"><input type="text" class="form-control" defaultValue={this.state.username} onChange={this.changeStateUsername.bind(this)}/></h4>
+                                        <RefreshIcon className="cursor-pointer h-25" id={user.username} onClick={this.changeUsername.bind(this)}/>
+                                    </div>
+                                    <div className="d-flex justify-content-between my-2">
                                             <p className="balance">Balance: <span className="">*** VND</span></p>
                                             <span className="cursor-pointer" id="show_currency">
                                                 <i className="fa-solid fa-eye cursor-pointer"></i>
                                             </span>
                                         </div>
-                                    </div>
                                 </div>
 
                                 <div className="options p-2">

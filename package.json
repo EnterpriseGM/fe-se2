@@ -20,6 +20,7 @@
     "react-lazy-load-image-component": "^1.5.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
+    "react-step-progress-bar": "^1.0.3",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },

@@ -7,29 +7,16 @@ export default class Forgot extends React.Component {
 
     constructor(props){
         super(props)
-        this.state({
+        this.state = {
             username: ""
-        })
+        }
     }
     
     componentDidMount() {
         this.props.isLogin(true);
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post(`${this.props.url}/api/auth/forgot-password`, {
-            username: e.target.username.value
-        }).then(res => {
-            if(res.status === 200){
-                window.alert(res.data.message);
-            }
-        }).catch(err => {
-            window.alert(err);
-        })
-    }
-
-    handleSubmti(e){
+    handleSubmit(e){
         e.preventDefault();
         axios.post(`${this.props.url}/api/auth/forgot-password`, {
             username: this.state.username
@@ -37,6 +24,8 @@ export default class Forgot extends React.Component {
             if(res.status === 200){
                 window.alert("Please check your email!");
             }
+        }).then(() => {
+            this.props.history.push("/login");
         }).catch((err) => {
             window.alert(err);
         })
@@ -44,7 +33,7 @@ export default class Forgot extends React.Component {
 
     setUsername(e){
         this.setState({
-            username: e.target.username.value
+            username: e.target.value
         })
     }
 

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CartPreview from '../cart-preview/CartPreview';
+import RefreshIcon from '@material-ui/icons/Refresh';
 import axios from 'axios';
 import './Menu.css';
 
@@ -21,11 +22,12 @@ class Menu extends React.Component{
                             <Link to="/login" className="login-btn__control d-inline-block btn fw-bold text-white px-4">Log In</Link>
                         </div>
                     </>,
-            cart_product: [],
+            cart_product: this.props.cart_product,
             all_products: [],
             user: {},
             total: 0,
-            name: null
+            name: null,
+            reload: false
         };
     }
 
@@ -33,8 +35,27 @@ class Menu extends React.Component{
         return (num*1000).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
 
-    componentDidMount(){
-        
+    reLoadCart(){
+        this.setState({
+            reload: true
+        })
+        if(this.state.reload){
+            axios.get(`${this.props.url}/api/cart/view-cart`)
+            .then((res) => {
+                this.setState({
+                    cart_product: res.data
+                })
+            }).then(() => {
+                this.setState({
+                    reload: false
+                })
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }
+
+    componentDidMount(){     
         axios.defaults.headers.common = {'Authorization': `${this.props.token}`}
         axios.get(`${this.props.url}/api/products`).then(res => {
             const all_products = res.data;
@@ -69,14 +90,15 @@ class Menu extends React.Component{
             if (this.props.checkLogin){
                 this.setState({
                     button: <>
-                            <div className="user-utilities__item user-utilities__cart border-0">
+                            <div className="user-utilities__item user-utilities__cart border-0" onMouseOver={this.reLoadCart.bind(this)}>
                                 <Link to="/cart" className="btn px-3 py-2 m-1 bg-white"><i className="fa-solid fa-cart-shopping cursor-pointer"></i></Link>
             
                                 <div className="user-utilities__item-extra user-utilities__cart--preview border-thin corner-5 py-3 px-2 cursor-default">
     
-                                <div className="user-utilities__cart--preview-heading cursor-default">
-                                <h3 className="user-utilities__cart--preview-title mx-2">List of products</h3>
-                            </div>
+                                <div className="d-flex user-utilities__cart--preview-heading cursor-default">
+                                    <h3 className="user-utilities__cart--preview-title mx-2">List of products</h3>
+                                    <RefreshIcon className="user-utilities__cart--preview-refresh cursor-pointer" onClick={this.reLoadCart.bind(this)}/>       
+                                </div>
     
                             <div className="user-utilities__cart--preview-list">
     
@@ -85,10 +107,8 @@ class Menu extends React.Component{
                                 ))}
     
                                 <div className="user-utilities__cart--preview-total p-2 d-flex justify-content-between align-items-center cursor-default">
-                                    <div className=""> Total: 
-                                        <span className="">
-                                            {this.formatNum(total)} VND
-                                        </span>  
+                                    <div className=""> Total:  
+                                        <span className=""> {this.formatNum(total)} VND</span>  
                                     </div>
     
                                     <div className="">

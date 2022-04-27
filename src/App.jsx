@@ -90,9 +90,9 @@ export default class App extends React.Component{
                         <Route exact path="/profile"  render={(props) => 
                             <Profile checkLogin = {this.checkLogging.bind(this)} setToken = {this.setToken.bind(this)} login = {this.state.checkLogin} url={url} token={token} {...props}/> } />
 
-                        <Route exact path="/forgot">
-                            <Forgot isLogin = {this.isLogging.bind(this)} url={url}/>                              
-                        </Route>
+                        <Route exact path="/forgot" render={(props) => 
+                            <Forgot isLogin = {this.isLogging.bind(this)} url={url} {...props}/> } />
+
                     </Switch>
                 </main>
                 <Footer/>
