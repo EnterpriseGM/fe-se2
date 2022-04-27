@@ -1,0 +1,19 @@
+label {
+    color: var(--secondary-text);
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.btn-confirm-container {
+    padding-top: 3vh!important;
+}
+
+.primary-btn{
+    width: 9vw;
+    height: 3vh;
+}
+
+.form-control .text-info{
+    width: 60%!important;
+    transform: translateX(30%);
+}

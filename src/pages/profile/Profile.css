@@ -1,0 +1,61 @@
+/* leftSide */
+.profile_container{
+    background-color: rgb(158, 235, 160);
+}
+
+.image {
+    position: relative;
+}
+
+.image_change {
+    position: absolute;
+    bottom: -4px;
+    right: 48px;
+    background: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.image_change:hover {
+    border: .5px solid var(--border-color);
+}
+
+.image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.options a {
+    transition: transform .2s;
+}
+
+.options a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.options a.external_link:hover {
+    color: red;
+}
+
+
+/* rightside */
+
+
+/* info */
+
+.info-table input {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-table input:focus {
+    border-color: #000;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+}

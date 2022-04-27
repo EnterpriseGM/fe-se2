@@ -1,0 +1,229 @@
+section{
+    margin: 0px 0px 10px 3px;
+    width: 99%;
+    box-shadow: 10px 10px #ff3556;
+}
+
+.banner_main {
+    background-color: black;
+    z-index: 0;
+    height: 100vh;
+    position: relative;
+    padding-bottom: 110px;
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    position: absolute !important;
+    z-index: -1;
+}
+
+.text_box {
+    position: inherit;
+    text-align: left;
+    padding-top: 36%;
+    height: 90%;
+    display: block;
+}
+
+.text_box span {
+    font-size: 28px;
+    line-height: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    display: block;
+}
+
+.text_box h1 {
+    font-size: 70px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    line-height: 70px;
+}
+
+.text_box h1 strong {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 70px;
+}
+
+.titlepage {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.titlepage h2 {
+    font-size: 50px;
+    color: #121212;
+    line-height: 45px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.titlepage u{
+    font-size: 20px;
+    color: #ff3556;
+    line-height:50px;
+}
+
+.titlepage span {
+    font-size: 17px;
+    line-height: 25px;
+    color: #0a0a0a;
+    padding-top: 20px;
+    display: block;
+}
+
+.d_flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.read_more {
+    font-size: 17px;
+    background-color: #000;
+    color: #fff;
+    padding: 14px 0px;
+    width: 100%;
+    max-width: 204px;
+    text-align: center;
+    display: inline-block;
+    transition: ease-in all 0.5s;
+    font-weight: 500;
+    height: 54px;
+}
+
+.read_more:hover {
+    background: #ff3556;
+    color: #fff;
+    transition: ease-in all 0.5s;
+    border-radius: 30px;
+}
+
+.products{
+
+    padding: 60px 0 30px 0;
+    margin-bottom: 90px;
+    background-color: #f4f4f4;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.products .titlepage{
+    text-align: left;
+    width: 90vmax;
+}
+
+.products .titlepage h2{
+    transform: translate(0, 50%);
+}
+
+.top_bar_menu {
+    display: inline-block;
+    margin-left: 65vmax !important;
+    transform: translate(0, -50%);
+}
+
+.top_bar_dropdown li {
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.standard_dropdown li {
+    display: inline-block;
+    position: relative;
+    height: 56px;
+}
+
+.standard_dropdown li li {
+    display: block;
+    width: 100%;
+}
+
+.standard_dropdown li li p {
+    display: block;
+    width: 100%;
+    border-bottom: solid 1px #f2f2f2;
+    font-size: 16px;
+}
+
+.standard_dropdown li:last-child p {
+    border-bottom: none;
+}
+
+.standard_dropdown li.hassubs>p i {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.standard_dropdown li p {
+    display: block;
+    position: relative;
+    font-size: 16px;
+    font-weight: 300;
+    color: #000000;
+    line-height: 56px;
+    white-space: nowrap;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.standard_dropdown li p:hover {
+    color: #0e8ce4;
+}
+
+.standard_dropdown li p i {
+    display: none;
+    -webkit-transform: translateY(-1px);
+    -moz-transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    -o-transform: translateY(-1px);
+    transform: translateY(-1px);
+    font-size: 12px;
+}
+
+.standard_dropdown li ul {
+    display: block;
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: auto;
+    visibility: hidden;
+    opacity: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.standard_dropdown li:hover>ul {
+    top: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.standard_dropdown ul ul {
+    left: 100%;
+    top: 0 !important;
+}
+
+.item_list{
+    width: 100vmax;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+    transform: translate(0, -150%)!important;
+    margin-bottom: 2px!important;
+    padding-bottom: 10px!important;
+    width: 50vw;
+}

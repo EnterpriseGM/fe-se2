@@ -1,0 +1,17 @@
+.form-control{
+    width: 20vw!important;
+}
+
+label {
+    color: var(--secondary-text);
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.back-to-login-btn{
+    transform: translate(0%);
+}
+
+.lb-ip {
+    transform: translate(0%)!important;
+}
