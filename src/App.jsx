@@ -23,10 +23,9 @@ export default class App extends React.Component{
             checkLogin: false,
             username: "",
             userId: "",
-            URL: "http://localhost:8080",
+            URL: "https://se2-be-main.herokuapp.com",
             token: null
-            //"start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
-            //"build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
+            
         }
     }
 
