@@ -23,7 +23,9 @@ export default class App extends React.Component{
             checkLogin: false,
             username: "",
             userId: "",
-            URL: "https://se2-be-main.herokuapp.com",
+            URL: "http://localhost:8080",//"https://se2-be-main.herokuapp.com",
+            // "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
+            // "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
             token: null
             
         }
@@ -93,8 +95,7 @@ export default class App extends React.Component{
                             <Forgot isLogin = {this.isLogging.bind(this)} url={url} {...props}/> } />
 
                         <Route path='/admin' component={() => { 
-                            window.location.href = `${url}/login`; 
-                            return null;
+                            window.location.replace(`${url}/login`); 
                         }}/>
 
                     </Switch>
