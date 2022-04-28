@@ -92,7 +92,7 @@ export default class ProductPage extends React.Component {
             {
                 this.state.isRender
                 ?
-                <div className="product-container">
+                <div className="product-container d-flex">
                     <div className="left-column">
                         <figure><img src={product.imageName} alt=""/></figure>
                     </div>    

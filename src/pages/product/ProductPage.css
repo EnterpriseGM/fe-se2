@@ -12,22 +12,22 @@
     background-color: rgb(241, 234, 228);
 }
 
-.left-column {
-    width: 65%;
+.left-column{
+    width: 65vw;
+    float: left;
+    height: 95vh;
 }
 
 .right-column {
-    height: 100vh;
-    margin: 20vh 0 20vh 60vw;
+    height: 95vh;
+    width: 35vw;
+    float: right;
 }
 
 .left-column img {
-    width: 49vw;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(10%, 16%);
+    width: 60vw;
+    height: 95vh;
+    position:  absolute;
 }
 
 .left-column img.active {

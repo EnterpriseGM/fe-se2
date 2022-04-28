@@ -285,7 +285,7 @@ export default class Profile extends React.Component {
                                     <form action="#" className="p-2 text-end">
                                         <select name="fund" id="pay-method" className="w-100 p-2 corner-5 border-thin mb-2 cursor-pointer" required>
                                             <option value="--Choose a payment method--" disabled>--Choose a payment method--</option>
-                                            <option value="bank">Bank</option>
+                                            <option value="bank">COD</option>
                                             <option value="wallet">E-Wallet</option>
                                         </select>
                                         <input type="number" id="pay-acc" className="w-100 p-2 corner-5 border-thin mb-2" placeholder="Account number" required/>

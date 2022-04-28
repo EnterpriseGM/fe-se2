@@ -35,7 +35,7 @@ export default class CartPreview extends React.Component {
                 <div className="user-utilities__cart--preview-item__content px-2 col-9">
                     <p className="user-utilities__cart--preview-item__name">Name: <span>{pd.name}</span> </p>
                     <p className="user-utilities__cart--preview-item__extra d-flex justify-content-between">
-                        <span className="user-utilities__cart--preview-item__price">{this.formatNum(pd.price)}</span>
+                        <span className="user-utilities__cart--preview-item__price">{this.formatNum(pd.price)} VND</span>
                         <span className="user-utilities__cart--preview-item__quantity px-3">Quantity: <span className="">{product.quantity}</span> </span>
                     </p>
                 </div>

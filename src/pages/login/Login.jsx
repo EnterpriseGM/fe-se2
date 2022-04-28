@@ -83,9 +83,6 @@ export default class Login extends React.Component{
                         <div className="back-to-login-btn" onClick={this.toHome.bind(this)} >
                             <Link to="/login" className="external_link"> &lt; Back to Home </Link>
                         </div>
-                        <div className="back-to-login-btn" onClick={this.toHome.bind(this)} >
-                            <Link to="/admin" className="external_link text-danger "> &lt; Login as Administrator </Link>
-                        </div>
                     </div>
                 </div>
             </div>

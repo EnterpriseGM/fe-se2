@@ -1,12 +1,11 @@
 .row{
     display: inline-grid;
-
 }
 
 .our_products {
     background-color: #fff;
-    width: 29vmax;
-    height: 90vh;
+    width: 25.7vmax;
+    height: 80vh;
     padding: 0 15px 15px 15px;
     transition: ease-in all 0.3s;
     margin-bottom: 30px;

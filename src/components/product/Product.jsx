@@ -30,7 +30,6 @@ export default class Product extends React.Component {
         const product = this.props.product;
         const price = Math.round(product.price*1.2);
         const dis_price = product.price;
-        const demo = product.description.substring(0, 50)+"...";
 
         if (this.state.isRedirect) {
             return <Redirect to = {{ pathname: `/product/${this.props.product.productId}` }} />;
@@ -51,9 +50,6 @@ export default class Product extends React.Component {
                         <br/>
                         <br/>
                         <p>Quantity: {product.quantity}</p>
-                        <br/>
-                        <br/>
-                        <p><i>{demo}</i></p>
                     </div>
                 </div>
             </div>

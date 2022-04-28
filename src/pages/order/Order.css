@@ -91,16 +91,16 @@ h6 {
     line-height: 4vh
 }
 
-.left {
+.order-container .left {
     float: left;
     font-weight: normal;
     color: rgb(126, 123, 123)
 }
 
-.right {
+.order-container .right {
     float: right;
     text-align: right;
-    transform: translate(-175%);
+    transform: translate(-185%);
 }
 
 .col {

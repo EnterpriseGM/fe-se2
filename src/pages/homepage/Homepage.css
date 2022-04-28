@@ -4,6 +4,10 @@ section{
     box-shadow: 10px 10px #ff3556;
 }
 
+.container{
+    padding: 0;
+}
+
 .banner_main {
     background-color: black;
     z-index: 0;
@@ -216,9 +220,10 @@ section{
 }
 
 .item_list{
-    width: 100vmax;
+    width: 90vw!important;
     display: grid;
     grid-template-columns: 30% 30% 30%;
+    padding-left: 3vw;
 }
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{

@@ -35,24 +35,16 @@ class Menu extends React.Component{
         return (num*1000).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
 
-    reLoadCart(){
-        this.setState({
-            reload: true
-        })
-        if(this.state.reload){
-            axios.get(`${this.props.url}/api/cart/view-cart`)
-            .then((res) => {
-                this.setState({
-                    cart_product: res.data
-                })
-            }).then(() => {
-                this.setState({
-                    reload: false
-                })
-            }).catch((err) => {
-                console.log(err);
+    reLoadCart(){        
+        axios.get(`${this.props.url}/api/cart/view-cart`)
+        .then((res) => {
+            this.setState({
+                reload: !this.state.reload,
+                cart_product: res.data
             })
-        }
+        }).catch((err) => {
+            console.log(err);
+        }) 
     }
 
     componentDidMount(){     
@@ -103,7 +95,7 @@ class Menu extends React.Component{
                             <div className="user-utilities__cart--preview-list">
     
                                 {cart_product.map((product, index) => (
-                                    <CartPreview key={index} product={product} token={this.props.token}/>
+                                    <CartPreview key={index} product={product} token={this.props.token} reload={this.state.reload}/>
                                 ))}
     
                                 <div className="user-utilities__cart--preview-total p-2 d-flex justify-content-between align-items-center cursor-default">
