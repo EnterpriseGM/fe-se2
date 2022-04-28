@@ -92,6 +92,11 @@ export default class App extends React.Component{
                         <Route exact path="/forgot" render={(props) => 
                             <Forgot isLogin = {this.isLogging.bind(this)} url={url} {...props}/> } />
 
+                        <Route path='/admin' component={() => { 
+                            window.location.href = `${url}/login`; 
+                            return null;
+                        }}/>
+
                     </Switch>
                 </main>
                 <Footer/>
