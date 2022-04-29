@@ -8,7 +8,9 @@ export default class Cart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            vouchers: [],
+            promoPrice: 0
         }
     }
 
@@ -19,6 +21,12 @@ export default class Cart extends React.Component {
             const products = res.data;
             this.setState({
                 products
+            })
+        }).then(() => {
+            return axios.get(`${this.props.url}/api/vouchers`)
+        }).then(res => {
+            this.setState({
+                vouchers: res.data
             })
         }).catch(err => {
             console.log(err);
@@ -83,6 +91,20 @@ export default class Cart extends React.Component {
                 const products = res.data;
                 this.setState({
                     products
+                })
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+
+    addVoucher(event){
+        if (event.key === 'Enter') {    
+            axios.get(`${this.props.url}/api/cart/add-voucher/${event.target.value.substring(0,event.target.value.indexOf(":"))}`)
+            .then(res => {
+                const voucher = res.data;
+                this.setState({
+                    promoPrice: voucher.price
                 })
             }).catch(err => {
                 console.log(err);
@@ -193,16 +215,14 @@ export default class Cart extends React.Component {
                         }
                     </ul>
                     </div>
-                    <div className="promoCode"><label htmlFor="promo">Have A Promo Code?</label><input type="text" name="promo" placeholder="Enter Code" className="promote_input" />
-                    <a href="#" className="c_btn"></a>
-                    </div>
+
 
                     <div className="subtotal cf">
                     <ul>
                         <li className="totalRow"><span className="label">Subtotal</span><span className="value">{this.formatNum(total)} VND</span></li>
                         
                             <li className="totalRow"><span className="label">Shipping</span><span className="value">15,000 VND</span></li>
-                            <li className="totalRow final"><span className="label">Total</span><span className="value">{this.formatNum(total+15)} VND</span></li>
+                            <li className="totalRow final"><span className="label">Total</span><span className="value">{this.formatNum(total+15-this.state.promoPrice)} VND</span></li>
                         <li className="totalRow"><button className="c_btn btn continue p-3" onClick={this.checkOut.bind(this)}>Checkout</button></li>
                         <li className="totalRow"><button className="c_btn btn text-danger continue p-3" onClick={this.deleteAll.bind(this)}>Delete All</button></li>
                     </ul>

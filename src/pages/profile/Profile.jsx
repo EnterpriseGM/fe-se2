@@ -1,7 +1,6 @@
 import React from 'react';
 import './Profile.css';
 import axios from 'axios';
-import RefreshIcon from '@material-ui/icons/Refresh';
 
 export default class Profile extends React.Component {
 
@@ -197,8 +196,7 @@ export default class Profile extends React.Component {
                                         </button>
                                     </div>
                                     <div className="user-name d-flex"> 
-                                        <h4 className="m-0 text-center"><input type="text" class="form-control" defaultValue={this.state.username} onChange={this.changeStateUsername.bind(this)}/></h4>
-                                        <RefreshIcon className="cursor-pointer h-25" id={user.username} onClick={this.changeUsername.bind(this)}/>
+                                        <h4 className="m-0 text-center"><input type="text" className="form-control" defaultValue={this.state.username} onChange={this.changeStateUsername.bind(this)} disabled/></h4>
                                     </div>
                                     <div className="d-flex justify-content-between my-2">
                                             <p className="balance">Balance: <span className="">*** VND</span></p>
@@ -284,8 +282,8 @@ export default class Profile extends React.Component {
                                 <div className="content-card__content">
                                     <form action="#" className="p-2 text-end">
                                         <select name="fund" id="pay-method" className="w-100 p-2 corner-5 border-thin mb-2 cursor-pointer" required>
-                                            <option value="--Choose a payment method--" disabled>--Choose a payment method--</option>
-                                            <option value="bank">COD</option>
+                                            <option value="--Choose a payment method--" selected disabled>--Choose a payment method--</option>
+                                            <option value="cod">COD</option>
                                             <option value="wallet">E-Wallet</option>
                                         </select>
                                         <input type="number" id="pay-acc" className="w-100 p-2 corner-5 border-thin mb-2" placeholder="Account number" required/>
