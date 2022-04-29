@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
+import moment from 'moment';
 
 
 export default class Signup extends React.Component{
@@ -72,8 +72,9 @@ export default class Signup extends React.Component{
     }
 
     handleChangeDob(e){
+        const date = moment(e).format("YYYY-MM-DD")
         this.setState({
-            dob: new Date(e).toISOString().substring(0, 10)
+            dob: date
         })
     }
     
@@ -90,10 +91,10 @@ export default class Signup extends React.Component{
             password: this.state.password,
             confirmPassword: this.state.password
         }).then(res => {
-            if(res.status === 200){
+            if(res.status === 201){
                 this.props.history.push('/login');
             }else{
-                window.alert("Fail to sign up!");
+                window.alert("Fail to sign up!" + res.data);
             }
         }).catch(err => {
             window.alert(err);
@@ -141,8 +142,12 @@ export default class Signup extends React.Component{
 
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DatePicker
+                                format = "YYYY-MM-DD"
                                 label="Date of birth"
                                 onChange={this.handleChangeDob.bind(this)}
+                                value={this.state.dob
+                                        ?   moment(this.state.dob, "YYYY-MM-DD")
+                                        :   null}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
