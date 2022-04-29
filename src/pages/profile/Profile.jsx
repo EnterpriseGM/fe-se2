@@ -146,6 +146,8 @@ export default class Profile extends React.Component {
                         password: "",
                         cpassword: ""
                     })
+                }else{
+                    window.alert("Please retype the password!");
                 }
             }).catch(err => {
                 window.alert(err);

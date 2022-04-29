@@ -96,10 +96,10 @@ export default class Signup extends React.Component{
                     this.props.history.push('/login');
                 }
             }else{
-                window.alert("Fail to sign up! " + res.body + "Wrong credential!");
+                window.alert("Fail to sign up! " + res.data + "Wrong credential!");
             }
         }).catch(err => {
-            console.log(err);
+            window.alert("Fail to sign up! " + "Wrong credential!");
         })
     }
 

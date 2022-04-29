@@ -40,7 +40,7 @@ export default class Login extends React.Component{
                 window.alert("Wrong credentials!");
             }
         }).catch(err => {
-            window.alert(err);
+            window.alert("Wrong credentials!");
         })
     }
 
