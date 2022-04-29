@@ -92,12 +92,14 @@ export default class Signup extends React.Component{
             confirmPassword: this.state.password
         }).then(res => {
             if(res.status === 201){
-                this.props.history.push('/login');
+                if(window.confirm("Signup success! Please check your email!") === true){
+                    this.props.history.push('/login');
+                }
             }else{
-                window.alert("Fail to sign up!" + res.data);
+                window.alert("Fail to sign up! " + res.body + "Wrong credential!");
             }
         }).catch(err => {
-            window.alert(err);
+            console.log(err);
         })
     }
 

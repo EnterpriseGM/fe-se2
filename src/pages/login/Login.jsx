@@ -36,6 +36,8 @@ export default class Login extends React.Component{
                 this.props.setToken(res.data.token);
                 this.props.checkLogin(true);
                 this.toHome();
+            }else{
+                window.alert("Wrong credentials!");
             }
         }).catch(err => {
             window.alert(err);

@@ -119,7 +119,7 @@ export default class Homepage extends React.Component{
                                     <div className="col-md-7">
                                         <div className="text_box">
                                         <span className="text-light">Welcome {user.name}</span>
-                                        <h1><strong className="text-danger"><u>What you need, we have!</u></strong> </h1>
+                                        <h1><strong className="text-danger">What you need, we have!</strong> </h1>
                                         <a href="#all_product" className="read_more" role="button">All products</a>
                                         
                                         </div>

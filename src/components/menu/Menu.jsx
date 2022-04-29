@@ -47,6 +47,12 @@ class Menu extends React.Component{
         }) 
     }
 
+    Logout(){
+        window.location.reload();
+        console.log("logout");
+        this.props.logout(false)
+    }
+
     componentDidMount(){     
         axios.defaults.headers.common = {'Authorization': `${this.props.token}`}
         axios.get(`${this.props.url}/api/products`).then(res => {
@@ -78,7 +84,7 @@ class Menu extends React.Component{
                 const pd = product.product
                 total += quantity * pd.price;
             }
-
+            console.log(this.props.checkLogin);
             if (this.props.checkLogin){
                 this.setState({
                     button: <>
@@ -135,7 +141,7 @@ class Menu extends React.Component{
                                     </div>
             
                                     <div className="user-utilities__account--info-item px-1">
-                                        <a href="/#" className="btn text-danger" onClick={this.props.logout(false)}>Logout</a>
+                                        <Link to="/" className="btn text-danger" onClick={this.Logout.bind(this)}>Logout</Link>
                                     </div>
                                 </div>
                         </div>

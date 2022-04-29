@@ -57,7 +57,7 @@ export default class App extends React.Component{
             return<> 
                 <main>
                     {!this.state.isLogin ?
-                        <Menu checkLogin={this.state.checkLogin} logout={this.handleCallback} url={url} token={token}/>
+                        <Menu checkLogin={this.state.checkLogin} logout={this.handleCallback.bind(this)} url={url} token={token}/>
                     :
                         <></>
                     }

@@ -42,6 +42,7 @@ export default class Order extends React.Component {
             {
                 !this.state.isLoading ?
                 <>
+                    <h1 className="text-center"><b>List of Orders</b></h1>
                     {orders.map((order, index) => {
                         const products = order.orderItem;
                         return (

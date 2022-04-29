@@ -37,6 +37,7 @@ input button{
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    z-index: 2;
 }
 
 .submit-btn:hover {
@@ -47,8 +48,8 @@ input button{
 
 
 .back-to-login{
-    padding-top: 6vh;
-    transform: translate(35%);
+    bottom: 0;
+    transform: translate(36%,150%);
 }
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
